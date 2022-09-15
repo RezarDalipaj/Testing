@@ -1,0 +1,25 @@
+package com.example.singleendpoint.model.entity;
+
+import lombok.Builder;
+import lombok.Getter;
+import lombok.Setter;
+
+import javax.persistence.*;
+
+@Entity
+@Table
+@Getter
+@Setter
+@Builder
+public class UserEntity {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(nullable = false, unique = true)
+    private Integer id;
+    @Column(unique = true)
+    private String userName;
+    @Column
+    private String password;
+    @Column
+    private Double balance;
+}
