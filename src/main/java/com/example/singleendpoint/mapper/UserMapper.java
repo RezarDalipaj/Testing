@@ -9,6 +9,7 @@ import org.mapstruct.Mapper;
 public interface UserMapper {
     /**
      * Controller layer to business layer
+     *
      * @param userDto
      * @return User
      */
@@ -16,6 +17,7 @@ public interface UserMapper {
 
     /**
      * Business layer to controller layer
+     *
      * @param user
      * @return UserDto
      */
@@ -23,6 +25,7 @@ public interface UserMapper {
 
     /**
      * Business layer to db layer
+     *
      * @param user
      * @return UserEntity
      */
@@ -30,6 +33,7 @@ public interface UserMapper {
 
     /**
      * Db layer to business layer
+     *
      * @param user
      * @return User
      */

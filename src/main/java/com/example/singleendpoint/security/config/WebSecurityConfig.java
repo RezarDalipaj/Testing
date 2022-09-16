@@ -1,9 +1,9 @@
 package com.example.singleendpoint.security.config;
 
-import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Lazy;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
@@ -19,7 +19,6 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 @Configuration
 @EnableWebSecurity
 @EnableGlobalMethodSecurity(prePostEnabled = true, securedEnabled = true)
-@AllArgsConstructor
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
 	private final JwtAuthenticationEntryPoint jwtAuthenticationEntryPoint;
@@ -27,6 +26,13 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 	private final UserDetailsService jwtUserDetailsService;
 
 	private final JwtRequestFilter jwtRequestFilter;
+
+	public WebSecurityConfig(JwtAuthenticationEntryPoint jwtAuthenticationEntryPoint, @Lazy UserDetailsService jwtUserDetailsService, JwtRequestFilter jwtRequestFilter) {
+		this.jwtAuthenticationEntryPoint = jwtAuthenticationEntryPoint;
+		this.jwtUserDetailsService = jwtUserDetailsService;
+		this.jwtRequestFilter = jwtRequestFilter;
+	}
+
 	@Autowired
 	public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
 		// configure AuthenticationManager so that it knows from where to load

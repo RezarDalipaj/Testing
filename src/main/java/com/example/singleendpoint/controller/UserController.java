@@ -24,6 +24,7 @@ public class UserController implements UsersApi {
 
     /**
      * User enters his data and they get saved in db
+     *
      * @param userDto
      * @return UserDto
      */
@@ -37,6 +38,7 @@ public class UserController implements UsersApi {
 
     /**
      * Lists all users from db
+     *
      * @return List<UserDto>
      * no param
      */
