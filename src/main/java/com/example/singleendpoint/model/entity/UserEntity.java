@@ -5,7 +5,7 @@ import lombok.*;
 import javax.persistence.*;
 
 @Entity
-@Table
+@Table(name = "users")
 @Getter
 @Setter
 @Builder
@@ -22,4 +22,6 @@ public class UserEntity {
     private String password;
     @Column
     private Double balance;
+    @Column
+    private String address;
 }

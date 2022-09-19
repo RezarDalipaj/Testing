@@ -1,0 +1,11 @@
+databaseChangeLog:
+  -  changeSet:
+       id:  2
+       author:  Rezari
+       changes:
+         -  addColumn:
+              tableName:  users
+              column:
+                name:  address
+                type:  varchar(255)
+
