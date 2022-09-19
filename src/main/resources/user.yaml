@@ -36,5 +36,3 @@ components:
           type: string
         balance:
           type: integer
-        address:
-          type: string
