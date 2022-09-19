@@ -1,7 +1,7 @@
 package com.example.singleendpoint.integration;
 
 import com.tngtech.jgiven.Stage;
-import com.tngtech.jgiven.annotation.ScenarioState;
+import com.tngtech.jgiven.annotation.ProvidedScenarioState;
 import com.tngtech.jgiven.integration.spring.JGivenStage;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpMethod;
@@ -9,14 +9,23 @@ import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.ResultActions;
 import org.springframework.test.web.servlet.request.MockHttpServletRequestBuilder;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
+
 @JGivenStage
 public class WhenSomeAction extends Stage<WhenSomeAction> {
+    @ProvidedScenarioState
+    ResultActions requestResult;
     @Autowired
     private MockMvc mockMvc;
-    @ScenarioState
-    private ResultActions requestResult;
     private MockHttpServletRequestBuilder requestBuilder;
 
+    /**
+     * Prepares a request
+     *
+     * @param httpMethod     give method
+     * @param endpoint       value
+     * @param pathParameters parameters
+     * @return this
+     */
     public WhenSomeAction a_$_request(HttpMethod httpMethod, String endpoint, Object... pathParameters) {
         requestBuilder = MockMvcRequestBuilders.request(httpMethod, endpoint, pathParameters);
         return self();
@@ -45,6 +54,7 @@ public class WhenSomeAction extends Stage<WhenSomeAction> {
         requestBuilder.queryParam(key, value);
         return self();
     }
+
     /**
      * Request is sent
      *

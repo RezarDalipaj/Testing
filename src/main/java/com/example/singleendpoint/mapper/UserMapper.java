@@ -1,8 +1,8 @@
 package com.example.singleendpoint.mapper;
 
 import com.example.singleendpoint.model.business.User;
+import com.example.singleendpoint.model.dto.UserDto;
 import com.example.singleendpoint.model.entity.UserEntity;
-import openapi.models.UserDto;
 import org.mapstruct.Mapper;
 
 @Mapper(componentModel = "spring")
@@ -13,7 +13,7 @@ public interface UserMapper {
      * @param userDto
      * @return User
      */
-    User controllerToService(openapi.models.UserDto userDto);
+    User controllerToService(UserDto userDto);
 
     /**
      * Business layer to controller layer

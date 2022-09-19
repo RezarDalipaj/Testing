@@ -10,19 +10,18 @@ import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMock
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.context.annotation.Import;
 import org.springframework.http.HttpMethod;
-import org.springframework.test.context.ActiveProfiles;
 
 
 @Import(JGivenConfig.class)
-@SpringBootTest
 @AutoConfigureMockMvc
-@ActiveProfiles("test")
+@SpringBootTest
 public class MyTest extends SpringScenarioTest<GivenSomeState, WhenSomeAction, ThenSomeOutcome> {
     @Test
-    public void something_should_happen() throws Exception {
+    void something_should_happen() throws Exception {
         given().user_exist_in_db();
         when().a_$_request(HttpMethod.GET, "/users")
-                .and().is_sent();
+                .and()
+                .is_sent();
         then().status_ok();
     }
 }

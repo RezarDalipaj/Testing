@@ -21,10 +21,6 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 class UserControllerTest {
     @Autowired
     private MockMvc mockMvc;
-    @MockBean
-    private UserService userService;
-    @MockBean
-    private UserMapper userMapper;
     @BeforeEach
     void setUp() {
     }
@@ -36,8 +32,6 @@ class UserControllerTest {
 
     @Test
     void listUsers() throws Exception {
-        when(userService.findAll())
-                .thenReturn(new ArrayList<>());
         mockMvc.perform(get("/users"))
                 .andExpect(status().isOk());
     }

@@ -2,15 +2,11 @@ package com.example.singleendpoint.controller;
 
 import com.example.singleendpoint.mapper.UserMapper;
 import com.example.singleendpoint.model.business.User;
+import com.example.singleendpoint.model.dto.UserDto;
 import com.example.singleendpoint.service.UserService;
 import lombok.AllArgsConstructor;
-import openapi.api.UsersApi;
-import openapi.models.UserDto;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -18,7 +14,7 @@ import java.util.stream.Collectors;
 @RestController
 @RequestMapping()
 @AllArgsConstructor
-public class UserController implements UsersApi {
+public class UserController {
     private final UserService userService;
     private final UserMapper userMapper;
 
@@ -42,8 +38,8 @@ public class UserController implements UsersApi {
      * @return List<UserDto>
      * no param
      */
-    @Override
-    public ResponseEntity<List<UserDto>> listUsers() {
+    @GetMapping("/users")
+    public ResponseEntity<?> getUsers() {
         List<User> users = userService.findAll();
         var response = users.stream().map(userMapper::serviceToController).collect(Collectors.toList());
         return ResponseEntity.ok(response);
