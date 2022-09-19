@@ -22,4 +22,6 @@ public class UserEntity {
     private String password;
     @Column
     private Double balance;
+    @Column
+    private String address;
 }
