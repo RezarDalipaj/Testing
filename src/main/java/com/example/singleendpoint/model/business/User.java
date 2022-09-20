@@ -1,8 +1,6 @@
 package com.example.singleendpoint.model.business;
 
-import lombok.AllArgsConstructor;
 import lombok.Getter;
-import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Getter

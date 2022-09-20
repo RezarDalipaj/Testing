@@ -1,11 +1,10 @@
 package com.example.singleendpoint.model.entity;
 
 import lombok.*;
-
-import javax.persistence.*;
-
-@Entity
-@Table
+import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
+import org.springframework.data.mongodb.core.mapping.Field;
+@Document
 @Getter
 @Setter
 @Builder
@@ -13,15 +12,14 @@ import javax.persistence.*;
 @AllArgsConstructor
 public class UserEntity {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(nullable = false, unique = true)
+    @Field
     private Integer id;
-    @Column(unique = true)
+    @Field
     private String userName;
-    @Column
+    @Field
     private String password;
-    @Column
+    @Field
     private Double balance;
-    @Column
+    @Field
     private String address;
 }
