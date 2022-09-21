@@ -1,0 +1,28 @@
+version: '3.3'
+services:
+  db:
+    container_name: mysql
+    image: mysql
+    networks:
+      - localhost
+    restart: unless-stopped
+    environment:
+      MYSQL_DATABASE: 'test'
+      MYSQL_ROOT_PASSWORD: 'password'
+    ports:
+      - '3306:3306'
+
+  app:
+    image: docker.io/library/single-endpoint:0.0.1-SNAPSHOT.mysql
+    depends_on:
+      - db
+    networks:
+      - localhost
+    environment:
+      SPRING_DATASOURCE_URL: 'jdbc:mysql://db:3306/test?autoReconnect=true&allowPublicKeyRetrieval=True&useSSL=false'
+      SERVER_PORT: '8081'
+    ports:
+      - '8081:8081'
+networks:
+  localhost:
+    driver: bridge
