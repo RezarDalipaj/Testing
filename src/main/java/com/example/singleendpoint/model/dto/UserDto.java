@@ -1,10 +1,12 @@
 package com.example.singleendpoint.model.dto;
 
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 
 @Getter
 @Setter
+@ToString
+@NoArgsConstructor
+@AllArgsConstructor
 public class UserDto {
     private Integer id;
     private String userName;

@@ -5,4 +5,5 @@ import org.springframework.boot.test.context.TestConfiguration;
 @TestConfiguration
 @EnableJGiven
 public class JGivenConfig {
+
 }

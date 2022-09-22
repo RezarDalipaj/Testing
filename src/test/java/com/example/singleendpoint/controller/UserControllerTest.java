@@ -1,6 +1,7 @@
 package com.example.singleendpoint.controller;
 
 import com.example.singleendpoint.config.JGivenConfig;
+import com.example.singleendpoint.config.MockRabbitMqConfig;
 import com.example.singleendpoint.integration.GivenSomeState;
 import com.example.singleendpoint.integration.ThenSomeOutcome;
 import com.example.singleendpoint.integration.WhenSomeAction;
@@ -12,7 +13,7 @@ import org.springframework.context.annotation.Import;
 import org.springframework.http.HttpMethod;
 
 
-@Import(JGivenConfig.class)
+@Import({JGivenConfig.class, MockRabbitMqConfig.class})
 @AutoConfigureMockMvc
 @SpringBootTest
 class UserControllerTest extends SpringScenarioTest<GivenSomeState, WhenSomeAction, ThenSomeOutcome> {
