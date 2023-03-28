@@ -28,7 +28,7 @@ public class UserController {
     /**
      * User enters his data and they get saved in db
      *
-     * @param userDto
+     * @param userDto UserDto
      * @return UserDto
      */
     @PostMapping("/signup")
