@@ -25,8 +25,7 @@ public class UserServiceImpl implements UserService {
     public User save(User toSaveUser) {
         var entity = userMapper.serviceToRepo(toSaveUser);
         var savedEntity = userRepository.save(entity);
-        var business = userMapper.repoToService(savedEntity);
-        return business;
+        return userMapper.repoToService(savedEntity);
     }
 
     /**
