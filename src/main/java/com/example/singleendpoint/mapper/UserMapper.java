@@ -10,23 +10,23 @@ public interface UserMapper {
     /**
      * Controller layer to business layer
      *
-     * @param userDto
-     * @return User
+     * @param userDto UserDto
+     * @return UserDto
      */
     User controllerToService(UserDto userDto);
 
     /**
      * Business layer to controller layer
      *
-     * @param user
-     * @return UserDto
+     * @param user User
+     * @return User
      */
     UserDto serviceToController(User user);
 
     /**
      * Business layer to db layer
      *
-     * @param user
+     * @param user User
      * @return UserEntity
      */
     UserEntity serviceToRepo(User user);
@@ -34,7 +34,7 @@ public interface UserMapper {
     /**
      * Db layer to business layer
      *
-     * @param user
+     * @param user UserEntity
      * @return User
      */
     User repoToService(UserEntity user);
