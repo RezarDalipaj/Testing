@@ -21,11 +21,11 @@ public class UserController {
     /**
      * User enters his data and they get saved in db
      *
-     * @param userDto
+     * @param userDto UserDto
      * @return UserDto
      */
     @PostMapping("/signup")
-    public ResponseEntity<?> saveUser(@RequestBody UserDto userDto) {
+    public ResponseEntity<UserDto> saveUser(@RequestBody UserDto userDto) {
         var user = userMapper.controllerToService(userDto);
         var savedUser = userService.save(user);
         var response = userMapper.serviceToController(savedUser);
@@ -39,7 +39,7 @@ public class UserController {
      * no param
      */
     @GetMapping("/users")
-    public ResponseEntity<?> getUsers() {
+    public ResponseEntity<List<UserDto>> getUsers() {
         List<User> users = userService.findAll();
         var response = users.stream().map(userMapper::serviceToController).collect(Collectors.toList());
         return ResponseEntity.ok(response);
